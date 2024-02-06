@@ -1,0 +1,12 @@
+ktor:
+    deployment:
+        port: 8080
+    development: true
+    application:
+        modules:
+            - com.example.ApplicationKt.module
+
+storage:
+    user: "postgres"
+    password: "40ehodas"
+    jdbcURL: $URL
