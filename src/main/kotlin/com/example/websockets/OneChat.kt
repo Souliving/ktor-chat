@@ -23,11 +23,10 @@ fun Routing.oneChat() {
                 frame as? Frame.Text ?: continue
                 val receivedText = frame.readText()
                 println(receivedText)
-                val parsed: ChatMessage = Json.decodeFromString<ChatMessage>(receivedText)
-                val sendMessage = parsed
-                dao.addNewChatMessage(sendMessage)
+                val chatMessage: ChatMessage = Json.decodeFromString<ChatMessage>(receivedText)
+                dao.addNewChatMessage(chatMessage)
                 connections.forEach {
-                    it.session.send(Json.encodeToString<ChatMessage>(sendMessage))
+                    it.session.send(Json.encodeToString<ChatMessage>(chatMessage))
                 }
             }
         } catch (e: Exception) {
