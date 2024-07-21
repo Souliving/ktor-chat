@@ -1,14 +1,12 @@
 package com.example.dao
 
 import com.example.database.DatabaseFactory.dbQuery
-import com.example.model.message.ChatMessage
-import com.example.model.message.ChatMessages
-import com.example.model.message.ChatRoom
-import com.example.model.message.ChatRooms
+import com.example.model.message.*
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.time.LocalDateTime
 
 class DAOFacadeImpl : DAOFacade {
     private fun resultRowToChatMessage(row: ResultRow) = ChatMessage(
@@ -100,10 +98,10 @@ class DAOFacadeImpl : DAOFacade {
 
 val dao: DAOFacade = DAOFacadeImpl().apply {
     runBlocking {
-//        if (allChatMessages().isEmpty()) {
-//            val chat =
-//                ChatMessage("1", "1", "1", "1", "1", "1", "1", LocalDateTime.now(), MessageStatuses.RECEIVED.toString())
-//            addNewChatMessage(chat)
-//        }
+        if (allChatMessages().isEmpty()) {
+            val chat =
+                ChatMessage("1", "1", "1", "1", "1", "1", "1", LocalDateTime.now(), MessageStatuses.RECEIVED.toString())
+            addNewChatMessage(chat)
+        }
     }
 }
