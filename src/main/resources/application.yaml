@@ -8,5 +8,5 @@ ktor:
 
 storage:
     user: "postgres"
-    password: "40ehodas"
-    jdbcURL: $URL
+    password: "4fFzG5313GCQnLCr"
+    jdbcURL: URL=jdbc:postgresql://localhost:5432/postgres

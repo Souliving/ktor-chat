@@ -34,6 +34,12 @@ class DAOFacadeImpl : DAOFacade {
         }
     }
 
+    override suspend fun allChatMessagesByChatId(chatId: String): List<ChatMessage> = dbQuery {
+        transaction {
+            ChatMessages.select(where = ChatMessages.chatId eq chatId).map(::resultRowToChatMessage)
+        }
+    }
+
     override suspend fun chatMessage(id: String): ChatMessage? = dbQuery {
         transaction {
             ChatMessages

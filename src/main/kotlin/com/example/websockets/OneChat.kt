@@ -18,7 +18,6 @@ fun Routing.oneChat() {
         val thisConnection = Connection(this)
         connections += thisConnection
         try {
-//                send("You are connected! There are ${connections.count()} users here.")
             for (frame in incoming) {
                 frame as? Frame.Text ?: continue
                 val receivedText = frame.readText()

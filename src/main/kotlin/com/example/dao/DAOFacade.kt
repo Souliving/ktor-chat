@@ -12,4 +12,5 @@ interface DAOFacade {
     suspend fun deleteAllChatMessage(): Boolean
     suspend fun allChatRooms(): List<ChatRoom>
     suspend fun addNewChatRoom(chatRoom: ChatRoom): ChatRoom?
+    suspend fun allChatMessagesByChatId(chatId: String): List<ChatMessage>
 }
